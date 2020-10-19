@@ -1,5 +1,6 @@
 ## Other, more comprehensive cheatsheets
 http://www.unix-manuals.com/refs/vi-ref/vi-ref.htm
+
 https://devhints.io/vim
 
 ## Observations
@@ -46,10 +47,8 @@ Lines starting with `^` require CTRL
 `:$` - last line
 
 ### Screen
-`^f` - forward  one screen
-
-`^d` - forward half a screen
-
+`^u` - up (half a screen)
+`^d` - down (half a screen)
 `^r` - redraw screen
 
 ## Clipboard
