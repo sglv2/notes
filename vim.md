@@ -48,7 +48,9 @@ Lines starting with `^` require CTRL
 
 ### Screen
 `^u` - up (half a screen)
+
 `^d` - down (half a screen)
+
 `^r` - redraw screen
 
 ## Clipboard
