@@ -20,9 +20,28 @@ List specific events
 kg -A ev | egrep "Warning"
 kg -A ev | egrep -i "(Backoff|Conflict|Failed|Invalid|NotReady|Rebooted|OOM|Unhealthy)"
 ```
+
+## Nodes
+List capacity for all nodes.
+```
+for n in $(kubectl get node -o name); do printf "\n${n}\n"; kubectl describe ${n}| grep "Capacity:" -A 10; done
+```
+
 ## RBAC
 List (cluster) role bindings, referenced roles and subjects for all namespaces.
 ```
 kg rolebinding,clusterrolebinding -A \
   -o jsonpath='{range .items[*]}{.kind}{","}{.metadata.name}{","}{.metadata.namespace}{","}{.roleRef.kind}{","}{.roleRef.name}{","}{range .subjects[*]}{.kind}{","}{.name}{","}{.namespace}{"\n"}{end}'
+```
+
+## Pods
+
+Get `name,namespace,hostIP,ready,restartCount,containerID`
+```
+kg po -o jsonpath='{range .items[*]}{.metadata.name}{","}{.metadata.namespace}{","}{.status.hostIP}{","}{range .status.containerStatuses[*]}{.ready}{","}{.restartCount}{","}{.containerID}{"\n"}{end}{end}'
+```
+
+The `containerID` can be used to determine the process on the node
+```
+ps -f --ppid $(pgrep -f ${CONTAINER_ID})
 ```
