@@ -20,3 +20,9 @@ List specific events
 kg -A ev | egrep "Warning"
 kg -A ev | egrep -i "(Backoff|Conflict|Failed|Invalid|NotReady|Rebooted|OOM|Unhealthy)"
 ```
+## RBAC
+List (cluster) role bindings, referenced roles and subjects for all namespaces.
+```
+kg rolebinding,clusterrolebinding -A \
+  -o jsonpath='{range .items[*]}{.kind}{","}{.metadata.name}{","}{.metadata.namespace}{","}{.roleRef.kind}{","}{.roleRef.name}{","}{range .subjects[*]}{.kind}{","}{.name}{","}{.namespace}{"\n"}{end}'
+```
