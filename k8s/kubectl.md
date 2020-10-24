@@ -9,8 +9,14 @@ alias kg='kubectl get'
 alias kns='kubectl config set-context --current --namespace'
 ```
 
-# Identifying problems
 ## Events
+List all warnings
 ```
-kg -A events| egrep -i "(Failed|Rebooted|NodeNotReady|HostPortConflict)"
+kg -A ev | egrep "Warning"
+```
+
+List specific events
+```
+kg -A ev | egrep "Warning"
+kg -A ev | egrep -i "(Backoff|Conflict|Failed|Invalid|NotReady|Rebooted|OOM|Unhealthy)"
 ```
