@@ -17,7 +17,6 @@ kg -A ev | egrep "Warning"
 
 List specific events
 ```
-kg -A ev | egrep "Warning"
 kg -A ev | egrep -i "(Backoff|Conflict|Failed|Invalid|NotReady|Rebooted|OOM|Unhealthy)"
 ```
 
