@@ -27,3 +27,30 @@ Note: `pgrep` expects a pattern, therefore the comma will be replaced with a pip
 ps --ppid $(pgrep -d ',' $(echo "${CMD}"| sed 's/,/|/g')) \
   -o pid,%cpu,%mem,vsz,etime,args --sort=-%cpu
 ```
+
+# Namespaces
+## List namespaces
+```
+lsns
+```
+List a specific type (`cgroup`, `ipc`, `mnt`, `net`, `pid`, `user`, `uts`)
+```
+lsns -t pid
+```
+## Run program with namespaces of other processes
+Replace `<target-pid>` with the pid of the target process before running the following.
+```
+sudo nsenter -a -t <target-pid> sh
+```
+
+### pid
+List processes running in namespace.
+```
+sudo nsenter -m -p -t <target-pid> ps -ef
+```
+
+### net
+List routes
+```
+sudo nsenter -n -t <target-pid> ip r
+```

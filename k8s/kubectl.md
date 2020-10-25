@@ -1,43 +1,55 @@
-# Intro
-## Aliases
-kubectl will be used extensively, so in order to avoid repetition, the following aliases are applied
-```
-alias k='kubectl'
-alias ka='kubectl apply -f'
-alias kd='kubectl describe'
-alias kg='kubectl get'
-alias kns='kubectl config set-context --current --namespace'
-```
-
 ## Events
 List all warnings
 ```
-kg -A ev | egrep "Warning"
+kubectl get -A ev | egrep "Warning"
 ```
 
 List specific events
 ```
-kg -A ev | egrep -i "(Backoff|Conflict|Failed|Invalid|NotReady|Rebooted|OOM|Unhealthy)"
+kubectl get -A ev | egrep -i "(Backoff|Conflict|Failed|Invalid|NotReady|Rebooted|OOM|Unhealthy)"
 ```
 
 ## Nodes
-List capacity for all nodes.
+List allocatable `cpu`, `memory` and `ephemeral-storage` for all nodes.
 ```
-for n in $(kubectl get node -o name); do printf "\n${n}\n"; kubectl describe ${n}| grep "Capacity:" -A 10; done
+kubectl get node -o jsonpath='{range .items[*]}{.metadata.name}{","}{..allocatable.cpu}{","}{..allocatable.memory}{","}{..allocatable.ephemeral-storage}{"\n"}{end}'
 ```
 
 ## RBAC
 List (cluster) role bindings, referenced roles and subjects for all namespaces.
 ```
-kg rolebinding,clusterrolebinding -A \
+kubectl get rolebinding,clusterrolebinding -A \
   -o jsonpath='{range .items[*]}{.kind}{","}{.metadata.name}{","}{.metadata.namespace}{","}{.roleRef.kind}{","}{.roleRef.name}{","}{range .subjects[*]}{.kind}{","}{.name}{","}{.namespace}{"\n"}{end}'
 ```
+
+## DNS
+### List endpoints for kube-dns
+```
+kubectl -n kube-system get ep kube-dns
+```
+### Resolve an address
+```
+kubectl run debug-pod --rm -it --restart=Never \
+  --image=docker.io/alpine:3.12 \
+  --command -- nslookup kubernetes.default.svc.cluster.local
+```
+### Check connectivity with DNS service
+Same as above(debug pod), using `--command -- nc -uzv kube-dns.kube-system 53`
+
+### Check kube-proxy logs
+```
+kubectl logs -n kube-system -fl k8s-app=kube-proxy
+```
+
+## API Server
+### Check connectivity with API server
+Debug pod with `--command -- nc -zv kubernetes.default 443`
 
 ## Pods
 
 Get `name,namespace,hostIP,ready,restartCount,containerID`
 ```
-kg po -o jsonpath='{range .items[*]}{.metadata.name}{","}{.metadata.namespace}{","}{.status.hostIP}{","}{range .status.containerStatuses[*]}{.ready}{","}{.restartCount}{","}{.containerID}{"\n"}{end}{end}'
+kubectl get po -o jsonpath='{range .items[*]}{.metadata.name}{","}{.metadata.namespace}{","}{.status.hostIP}{","}{range .status.containerStatuses[*]}{.ready}{","}{.restartCount}{","}{.containerID}{"\n"}{end}{end}'
 ```
 
 The `containerID` can be used to determine the process on the node
