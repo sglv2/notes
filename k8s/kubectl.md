@@ -6,7 +6,7 @@ kubectl get -A ev | egrep "Warning"
 
 List specific events
 ```
-kubectl get -A ev | grep -i -E "(Backoff|Conflict|Failed|Invalid|NotReady|Rebooted|OOM|Unhealthy)"
+kubectl get -A ev | grep -i -E 'Backoff|Conflict|Failed|Invalid|NotReady|Rebooted|OOM|Unhealthy'
 ```
 
 ## Nodes
@@ -47,9 +47,9 @@ Debug pod with `--command -- nc -zv kubernetes.default 443`
 
 ## Pods
 
-Get `name,namespace,hostIP,ready,restartCount,containerID`
+Get `name,namespace,hostIP,ready,restartCount,containerID` sorted by number of restarts (descending).
 ```
-kubectl get po -o jsonpath='{range .items[*]}{.metadata.name}{","}{.metadata.namespace}{","}{.status.hostIP}{","}{range .status.containerStatuses[*]}{.ready}{","}{.restartCount}{","}{.containerID}{"\n"}{end}{end}'
+kubectl get po -o jsonpath='{range .items[*]}{.metadata.name}{","}{.metadata.namespace}{","}{.status.hostIP}{","}{range .status.containerStatuses[*]}{.ready}{","}{.restartCount}{","}{.containerID}{"\n"}{end}{end}'| sort -rt',' -k5
 ```
 
 The `containerID` can be used to determine the process on the node
