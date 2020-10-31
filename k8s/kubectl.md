@@ -10,11 +10,14 @@ kubectl get -A ev | grep -i -E 'Backoff|Conflict|Failed|Invalid|NotReady|Reboote
 ```
 
 ## Nodes
+```
+kubectl get node -o jsonpath='{range .items[*]}{.metadata.name}{" "}{..reason}{"\n"}{end}'
+```
+
 List capacity and allocated resources for nodes.
 ```
 kubectl describe node| grep -A 7 -E 'Allocated|Hostname'
 ```
-
 ## RBAC
 List (cluster) role bindings, referenced roles and subjects for all namespaces.
 ```
@@ -57,6 +60,17 @@ The `containerID` can be used to determine the process on the node
 ps -f --ppid $(pgrep -f ${CONTAINER_ID})
 ```
 
+## Logs
+Get logs for the last 10 minutes, with timestamps and a prefix containing the pod and container name.
+```
+kubectl logs -f --since=10m --timestamps --prefix deploy/${DEPLOYMENT}
+```
+
+Get logs using a selector
+```
+kubectl logs -l ${KEY}=${VALUE}
+```
+
 ## Load
 Pod using 1 CPU (1000m)
 ```
@@ -66,4 +80,10 @@ kubectl run --image=serbangilvitu/kube-stress stress-cpu -- --cpu 1
 Pod using 1GiB RAM
 ```
 kubectl run --image=serbangilvitu/kube-stress stress-mem -- --vm 1 --vm-bytes 1G
+```
+
+## Configmaps
+Get data with newlines instead of `\n`
+```
+k get cm ${CONFIGMAP} -o json| jq '.data'| sed 's/\\n/\n/g'
 ```
