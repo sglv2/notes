@@ -120,7 +120,13 @@ kubectl run --image=serbangilvitu/kube-stress stress-mem -- --vm 1 --vm-bytes 1G
 ### 
 
 ## Configmaps
-Get data with newlines instead of `\n`
+* Get data with newlines instead of `\n`
 ```
-k get cm ${CONFIGMAP} -o json| jq '.data'| sed 's/\\n/\n/g'
+kubectl get cm ${CONFIGMAP} -o json| jq '.data'| sed 's/\\n/\n/g'
+```
+
+## Secrets
+* Decoding secrets
+```
+kubectl get secret ${SECRET} -o jsonpath='{.data.token}'| base64 --decode
 ```
