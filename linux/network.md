@@ -1,3 +1,29 @@
+# Interfaces
+List network interfaces in a compact format
+```
+ip -br a
+ip -br address list
+```
+
+# Routes
+## List routes
+```
+ip r
+ip route list
+```
+### Alternative 1: netstat
+```
+netstat -r
+```
+
+# Connectivity
+TCP
+```
+IP=8.8.8.8; PORT=443; nc -zv ${IP} ${PORT} || echo "Failed to connect to ${IP}:${PORT}"
+```
+
+For UDP add the `-u` flag to nc.
+
 # Connections
 ## List processes using TCP or UDP sockets
 ```
