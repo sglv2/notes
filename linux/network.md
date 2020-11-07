@@ -1,3 +1,4 @@
+# Connections
 ## List processes using TCP or UDP sockets
 ```
 ss -tulpn
@@ -5,15 +6,10 @@ ss -tulpn
 ### Alternative 1: netstat
 Use `netstat` instead of `ss` in the command above.
 
-## List processes using TCP sockets with an ESTABLISHED state
-Listening
-```
-ss state listening -pt
-```
-
-Established
+## List processes using TCP sockets with an specific state
 ```
 ss state established -pt
+ss state connected -pt # All the states except for listen and closed
 ```
 ### Alternative 1 : netstat
 Use `netstat` instead of `ss` in the commands above.
@@ -28,11 +24,17 @@ Not established
 ```
 lsof -i -s TCP:^ESTABLISHED
 ```
-## List processes listening on specific ports
+## List processes using TCP sockets, including timer information
+```
+ss -optn
+```
+
+## List processes using specific ports
 Source or destination port is 22
 ```
-ss -pt '( dport = :22 or sport = :22 )'
-ss -pt '( dport = :ssh or sport = :ssh )'
+ss -pt dport :22 or sport :22
+ss -pt dport :ssh or sport :ssh
+ss -pt dst :22 or src :22
 ```
 ### Alternative 1 : netstat
 Use `netstat` instead of `ss` in the commands above.
@@ -45,4 +47,15 @@ lsof -i :22
 Source or destination port is in range 1-1024
 ```
 lsof -i :1-1024
+```
+
+## List processes connecting to a specific IP address
+Using `1.1.1.1` as an example IP address
+```
+ss -pt dst 1.1.1.1 or src 1.1.1.1
+```
+
+### Alternative 1 : lsof
+```
+lsof -i @1.1.1.1
 ```
