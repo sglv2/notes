@@ -1,3 +1,26 @@
+# get
+download all hooks for a named release
+```
+helm get hooks
+```
+
+download the manifest for a named release
+```
+helm get manifest
+```
+
+download the notes for a named release
+```
+helm get notes
+```
+
+download the values file for a named release
+```
+helm get values
+```
+
+# history
+
 # install
 Install a chart
 ```
@@ -32,6 +55,12 @@ List repos
 helm repo ls
 ```
 
+# pull
+Download a chart from a repository and (optionally) unpack it in local directory
+```
+helm pull ${CHART_NAME} --version ${VERSION}
+```
+
 # search
 ## hub
 Searches the hub https://hub.helm.sh/ which now redirects to https://artifacthub.io/
@@ -46,6 +75,8 @@ Search repositories for a keyword in charts
 helm search repo ${KEYWORD}
 helm search repo redis
 ```
+
+# rollback
 
 # show
 ```
