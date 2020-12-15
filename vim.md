@@ -77,3 +77,5 @@ Lines starting with `^` require CTRL
 `:set ff=unix` Convert Windows line endings to Unix line ending
 
 `.` repeat last command
+
+`:set number` Display line numbers
