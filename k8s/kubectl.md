@@ -91,7 +91,16 @@ kubectl get pods --field-selector=status.phase=Running -o jsonpath='{range .item
 
 * Get images used in the pods
 ```
-kubectl get pods --field-selector=status.phase=Running -o jsonpath='{range .items[*]}{ ..metadata.name }{" "}{ ..image }{"\n"}{end}'
+kubectl get pods --field-selector=status.phase=Running -o jsonpath='{range .items[*]}{ ..metadata.name }{" "}{ ..spec.containers[*].image }{"\n"}{end}'
+```
+* Get nodes where the pods are running
+List pods and their nodes
+```
+kubectl get pods -o jsonpath='{range .items[*]}{ ..metadata.name }{" "}{ ..spec.nodeName }{"\n"}{end}'
+```
+List pods for a specific node name (will throw error if node doesn't exist)
+```
+kubectl get pods --field-selector=spec.nodeName=u1 -o jsonpath='{range .items[*]}{ ..metadata.name }{"\n"}{end}'
 ```
 
 ## Logs
