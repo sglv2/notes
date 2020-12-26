@@ -85,3 +85,13 @@ ss -pt dst 1.1.1.1 or src 1.1.1.1
 ```
 lsof -i @1.1.1.1
 ```
+
+## Check open ports
+Check common ports
+```
+nmap -T4 -Pn <ip-address>
+```
+Check if ports in range 1-1024 are open for `<ip-address>`
+```
+nmap -T4 -Pn -p 1-1024 <ip-address>
+```
