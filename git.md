@@ -25,19 +25,42 @@ View the changes you staged for the next commit
 git diff --cached
 ```
 ## push
+Use `-n` for dry-run
 ```
+git push -u origin <branch>
+```
+Delete a remote branch
+```
+git push -d origin <branch>
+```
+Push tags
+```
+git push --tags
+```
+## stash 
+
+```
+git stash
 ```
 
-## stash 
 ```
+git stash apply
 ```
 
 ## status 
+List of modified files (using `-vv` will also list contents)
 ```
+git status -v
 ```
 
 ## tag
+Tag current commit
 ```
+git tag -a -m <message> <tag>
+```
+Delete a tag
+```
+git tag -d <tag>
 ```
 
 ## 
