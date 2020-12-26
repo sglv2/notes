@@ -95,3 +95,30 @@ Check if ports in range 1-1024 are open for `<ip-address>`
 ```
 nmap -T4 -Pn -p 1-1024 <ip-address>
 ```
+
+# Firewalls
+## firewalld
+Check the status of the firewalld service
+```
+systemctl status firewalld.service
+```
+List ports
+```
+firewall-cmd --list-ports
+```
+Permanently add port
+```
+firewall-cmd --permanent --zone=public --add-port=<port-number>/tcp
+```
+Permanently remove port
+```
+firewall-cmd --permanent --zone=public --remove-port=<port-number>/tcp
+```
+Reload configuration
+```
+firewall-cmd --reload
+```
+List zones
+```
+firewall-cmd --list-all-zones
+```
