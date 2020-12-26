@@ -52,13 +52,13 @@ git reset --hard
 git reset --hard HEAD^
 ```
 ## stash 
-
+Save your local modifications to a new stash entry and roll them back to HEAD
 ```
 git stash
 ```
-
+Apply changes and remove the latest stash entry
 ```
-git stash apply
+git stash pop
 ```
 ## status 
 List of modified files (using `-vv` will also list contents)
