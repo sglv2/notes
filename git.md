@@ -24,6 +24,10 @@ View the changes you staged for the next commit
 ```
 git diff --cached
 ```
+Diff between local and remote branch
+```
+git diff <branch>..origin/<branch>
+```
 ## push
 Use `-n` for dry-run
 ```
@@ -37,6 +41,16 @@ Push tags
 ```
 git push --tags
 ```
+## reset
+```
+git reset --mixed
+```
+```
+git reset --hard
+```
+```
+git reset --hard HEAD^
+```
 ## stash 
 
 ```
@@ -46,7 +60,6 @@ git stash
 ```
 git stash apply
 ```
-
 ## status 
 List of modified files (using `-vv` will also list contents)
 ```
@@ -61,8 +74,4 @@ git tag -a -m <message> <tag>
 Delete a tag
 ```
 git tag -d <tag>
-```
-
-## 
-```
 ```
