@@ -28,6 +28,11 @@ Diff between local and remote branch
 ```
 git diff <branch>..origin/<branch>
 ```
+## merge
+Create a single commit instead of doing a merge
+```
+git merge --squash <branch>
+```
 ## push
 Use `-n` for dry-run
 ```
