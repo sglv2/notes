@@ -27,3 +27,8 @@ Find user
 ipa user-find
 ipa user-find <pattern>
 ```
+
+# ipa-backup
+```
+ipa-backup --online --data
+```
