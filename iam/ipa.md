@@ -8,6 +8,12 @@ List cached Kerberos tickets
 ```
 klist
 ```
+## DNS
+Search for DNS zones
+```
+ipa dnszone-find --pkey-only
+ipa dnszone-find --raw
+```
 ## role-find
 Show all roles
 ```

@@ -12,6 +12,10 @@ Switch to an existing branch
 ```
 git checkout <branch>
 ```
+Revert uncommited changes to a file
+```
+git checkout HEAD -- <path>
+```
 
 ## cleanup
 Remove untracked files from the working tree (`-n` for dry-run)
