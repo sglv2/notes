@@ -3,6 +3,15 @@ Update the index by adding all files in the working directory (`-n` for dry-run)
 ```
 git add -A
 ```
+## branch
+Show all branches
+```
+git branch -a
+```
+Show remote branches
+```
+git branch -r
+```
 ## checkout
 Create a new branch
 ```
@@ -31,6 +40,11 @@ git diff --cached
 Diff between local and remote branch
 ```
 git diff <branch>..origin/<branch>
+```
+## fetch
+Download objects and refs from a remote and remove any remote-tracking references that no longer exist on the remote.
+```
+git fetch -p
 ```
 ## merge
 Create a single commit instead of doing a merge
