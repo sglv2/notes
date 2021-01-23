@@ -3,13 +3,17 @@ Print user and group information for the specified USERNAME, or (when USERNAME o
 ```
 id username
 ```
-get uid
+* get uid
 ```
 id -u
 ```
-get real name
+* get real name
 ```
 id -nu
+```
+* list of groups
+```
+id -nG
 ```
 
 ## hostnamectl
