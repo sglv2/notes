@@ -37,31 +37,52 @@ delete -d 5
 ipcs shows information on the inter-process communication facilities for which the calling process has read access.  
 By default it  shows  information  about  all  three  resources shared memory segments, message queues, and semaphore arrays.
 
-## lsblk
-
-## lsof
-The ‘lsof’ command will provide the number of open files associated with a process.
-
-## lsns
-List namespaces for a process
-```
-sudo lsns -p 23029
-```
-List namespaces of type `net`
-```
-sudo lsns -t net
-```
-
-# last
+## last
 List of last logged in users for the last 7 days
 ```
 sudo last -iw --since -7days
 ```
 
-# lastb
+## lastb
 List of bad login attempts for the last 7 days
 ```
 sudo lastb -iw -s -7days
+```
+
+## lsblk
+
+## lsof
+List of open files
+* filtered by pid
+```
+lsof -p <pid>
+```
+* filtered by command
+```
+lsof -c <command>
+```
+* filtered by user
+```
+lsof -u <user>
+```
+* filtered by directory
+```
+lsof +D <path-to-dir>
+```
+
+Combining filters with `-a` (AND)
+```
+lsof -p <pid> -u <user> -a
+```
+
+## lsns
+List namespaces for a process
+```
+sudo lsns -p <pid>
+```
+List namespaces of type `net`
+```
+sudo lsns -t net
 ```
 
 ## lshw
