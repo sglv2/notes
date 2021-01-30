@@ -13,5 +13,5 @@ kubectl run event-viewer --rm -it \
 * in another terminal
 ```
 kubectl cp $(which kubectl) event-viewer:/usr/local/bin/kubectl
-kubectl exec -it event-viewer -- kubectl get events
+kubectl exec -it event-viewer -- kubectl get events -w
 ```
