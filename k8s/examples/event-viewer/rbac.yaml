@@ -1,0 +1,31 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: event-viewer
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: event-viewer
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: event-viewer
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: event-viewer
+rules:
+- apiGroups: [""]
+  resources:
+  - events
+  verbs:
+  - get
+  - list
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: event-viewer
+  namespace: default
