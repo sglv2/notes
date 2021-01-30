@@ -1,3 +1,8 @@
+## fmt
+Format output, e.g. for a width of 120 columns.
+```
+ps -ef | fmt -w 120
+```
 ## id
 Print user and group information for the specified USERNAME, or (when USERNAME omitted) for the current user.
 ```
