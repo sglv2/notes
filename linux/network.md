@@ -15,6 +15,10 @@ ip route list
 ```
 netstat -r
 ```
+## Tracing routes
+```
+nmap -sn --traceroute $IP
+```
 
 # Connectivity
 TCP
