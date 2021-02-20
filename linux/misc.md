@@ -46,6 +46,13 @@ delete -d 5
 ipcs shows information on the inter-process communication facilities for which the calling process has read access.  
 By default it  shows  information  about  all  three  resources shared memory segments, message queues, and semaphore arrays.
 
+## jq
+* Decode JWT token
+```
+export JWT="<token>"
+jq -R 'split(".") | .[0],.[1] | @base64d | fromjson' <<< $(printf "${JWT}") | jq '.'
+```
+
 ## last
 List of last logged in users for the last 7 days
 ```
