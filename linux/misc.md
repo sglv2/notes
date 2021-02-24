@@ -119,6 +119,12 @@ rsync -auv dir1/ dir2/
 rsync -auv dir1/ <user>@<host>:/dir1/
 ```
 
+## sipcalc
+IP subnet calculator
+```
+sipcalc 10.0.0.0/28
+```
+
 ## sudo
 * `-E` preserve environment
 * `-l` If no command is specified, list the allowed (and forbidden) commands for the invoking user
