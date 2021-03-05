@@ -1,3 +1,18 @@
+## date
+
+Get yesterday's date
+```
+date --date="yesterday" +%Y-%m-%d
+```
+Get timestamp
+```
+date +%s
+```
+Get date from timestap
+```
+date -d @<timestamp>
+```
+
 ## fmt
 Format output, e.g. for a width of 120 columns.
 ```
