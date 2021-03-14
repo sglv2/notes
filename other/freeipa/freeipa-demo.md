@@ -36,11 +36,11 @@ docker run --name freeipa-2 -it \
     --sysctl net.ipv6.conf.all.disable_ipv6=0 \
     --net freeipa \
     --ip 172.18.0.102 \
-    --add-host freeipa1.example.local:172.18.0.101 \    
+    --add-host freeipa1.example.local:172.18.0.101 \
     --add-host freeipa3.example.local:172.18.0.103 \
     docker.io/freeipa/freeipa-server:fedora-33 \
     ipa-replica-install \
-    --realm=EXAMPLE.LOCAL \
+    --domain example.local \
     --server freeipa1.example.local \
     --admin-password=The-admin-password \
     --no-host-dns --no-ntp \
