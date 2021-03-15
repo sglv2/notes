@@ -42,7 +42,9 @@ docker run --name freeipa-2 -it \
     --domain example.local \
     --server freeipa1.example.local \
     --admin-password=The-admin-password \
-    --no-host-dns --no-ntp \
     --hostname freeipa2.example.local \
     --ip-address=172.18.0.102
+    --no-host-dns \
+    --no-ntp \
+    --setup-ca
 ```
