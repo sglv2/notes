@@ -106,23 +106,71 @@ Check the status of the firewalld service
 ```
 systemctl status firewalld.service
 ```
+
 List ports
 ```
 firewall-cmd --list-ports
 ```
+
 Permanently add port
 ```
 firewall-cmd --permanent --zone=public --add-port=<port-number>/tcp
 ```
+
 Permanently remove port
 ```
 firewall-cmd --permanent --zone=public --remove-port=<port-number>/tcp
 ```
+
 Reload configuration
 ```
 firewall-cmd --reload
 ```
+
 List zones
 ```
 firewall-cmd --list-all-zones
+```
+
+# Traffic Analysis
+## tcpdump
+List of devices from which you can capture traffic
+```
+tcpdump -D
+```
+
+Capture on all devices, do not convert addresses to names
+```
+tcpdump -i any -n
+```
+
+```
+tcpdump -i any port 53 -n
+tcpdump -i any src port 53 -n
+tcpdump -i any dst port 53 -n
+```
+
+Write capture to pcap file
+```
+tcpdump -i any port 53 -w dns.pcap -v
+```
+Read pcap file
+```
+tcpdump -r dns.pcap
+```
+
+Traffic for a particular host
+```
+tcpdump host duckduckgo.com -i any -n
+tcpdump "host duckduckgo.com and port 443" -i any -n
+```
+
+Source and destination networks
+```
+tcpdump -i any -n "src net 192.168.0.0/16 and not dst net 10.0.0.0/8
+```
+
+Filter on TCP flags
+```
+tcpdump -i any  "tcp[tcpflags] & tcp-ack !=0"
 ```
