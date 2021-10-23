@@ -139,3 +139,24 @@ kubectl get cm ${CONFIGMAP} -o json| jq '.data'| sed 's/\\n/\n/g'
 ```
 kubectl get secret ${SECRET} -o jsonpath='{.data.token}'| base64 --decode
 ```
+
+## Namespaces
+### Update finalizers
+```
+# start kubectl proxy
+export K8S_NAMESPACE=<placeholder>
+export JSON_TEMPLATE=$(cat <<EOF
+{
+  "kind": "Namespace",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "${K8S_NAMESPACE}"
+  },
+  "spec": {
+    "finalizers": []
+  }
+}
+EOF)
+curl -k -H "Content-Type: application/json" -X PUT --data-binary \
+  "$(echo ${JSON_TEMPLATE} | envsubst)" http://127.0.0.1:8001/api/v1/namespaces/${K8S_NAMESPACE}/finalize
+```
