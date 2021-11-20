@@ -6,7 +6,8 @@ docker run --rm -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" amazon
 
 Export cluster settings, including defaults
 ```
-curl -k -u admin:admin https://localhost:9200/_cluster/settings?include_defaults | jq . > original-settings.json
+# GET _cluster/settings?include_defaults
+curl -sk -u admin:admin https://localhost:9200/_cluster/settings?include_defaults | jq . > original-settings.json
 ```
 
 # Disk based shard allocation
@@ -34,11 +35,17 @@ Elasticsearch will try to relocate shards from nodes where disk usage exceeds th
 `cluster.routing.allocation.disk.watermark.flood_stage`
 Enforces a `read_only_allow_delete` on every index on a node where at least one disk is exceeding this threshold (default 95%)
 
+## Get disk usage
+```
+# GET _cat/allocation?format=json
+curl -sk -u admin:admin -X GET https://localhost:9200/_cat/allocation?format=json | jq .
+```
+
 ## Updating disk based shard allocation configuration
 ```
 # PUT _cluster/settings
 curl -X PUT https://localhost:9200/_cluster/settings \
-  -k -u admin:admin \
+  -sk -u admin:admin \
   -H 'Content-Type: application/json' \
   -d'
   {
