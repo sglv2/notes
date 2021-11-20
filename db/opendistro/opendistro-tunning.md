@@ -38,7 +38,7 @@ Enforces a `read_only_allow_delete` on every index on a node where at least one 
 ## Get disk usage
 ```
 # GET _cat/allocation?format=json
-curl -sk -u admin:admin -X GET https://localhost:9200/_cat/allocation?format=json | jq .
+curl -sk -u admin:admin -X GET 'https://localhost:9200/_cat/allocation?format=json&bytes=mb' | jq .
 ```
 
 ## Updating disk based shard allocation configuration
