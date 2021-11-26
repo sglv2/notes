@@ -122,6 +122,16 @@ Hardware Info
 sudo lshw
 ```
 
+## patch
+```
+printf "first line" > ~/sample.txt
+cp ~/sample.txt /tmp/sample.txt
+printf "\nsecond line" >> /tmp/sample.txt
+
+diff /tmp/sample.txt ~/sample.txt > sample.patch
+patch ~/sample.txt sample.patch
+```
+
 ## passwd
 * `-e` Immediately expire an account's password. This in effect can force a user to change their password at the user's next login.
 * `-l` lock a named account
