@@ -21,8 +21,11 @@ EOF
 
 sysctl -w net.ipv4.ip_forward=1
 
+
+
 # Install kubectl, kubelet and kubeadm
 pushd ${TOOLS_DOWNLOAD_DIR}
+
 
 for t in "kubectl" "kubelet" "kubeadm";do sudo install -o root -g root -m 0755 ${t} /usr/local/bin/${t};done
 
@@ -45,3 +48,23 @@ popd
 # Dependencies
 dpkg -i ${DEP_DOWNLOAD_DIR}/*.deb
 
+export KUBECONFIG=/etc/kubernetes/admin.conf
+kubectl get nodes
+
+# kubelet
+pushd ${TOOLS_DOWNLOAD_DIR}
+
+mkdir -p /etc/systemd/system/kubelet.service.d
+
+cat kubelet.service | sed "s:/usr/bin:${BIN_DIR}:g" | tee /etc/systemd/system/kubelet.service
+
+cat 10-kubeadm.conf | sed "s:/usr/bin:${BIN_DIR}:g" | tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+cat << EOF > /etc/systemd/system/kubelet.service.d/0-containerd.conf
+[Service]
+Environment="KUBELET_EXTRA_ARGS=--container-runtime=remote --runtime-request-timeout=15m --container-runtime-endpoint=unix:///run/containerd/containerd.sock"
+EOF
+
+systemctl enable --now kubelet
+
+popd
