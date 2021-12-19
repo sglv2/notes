@@ -1,3 +1,11 @@
+# Check which init system you're using
+```
+cat /proc/1/comm
+sudo stat /proc/1/exe
+stat /sbin/init
+
+```
+
 # journalctl
 Display last 100 records and follow
 ```

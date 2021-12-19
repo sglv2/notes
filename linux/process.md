@@ -28,6 +28,11 @@ ps --ppid $(pgrep -d ',' $(echo "${CMD}"| sed 's/,/|/g')) \
   -o pid,%cpu,%mem,vsz,etime,args --sort=-%cpu
 ```
 
+## Process tree
+```
+pstree -sp ${PID}
+```
+
 # Namespaces
 ## List namespaces
 ```
