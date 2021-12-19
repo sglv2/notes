@@ -37,7 +37,18 @@ journalctl -ru cups.service
 ```
 
 # systemctl
-Get list of services
+## Get list of services
 ```
 systemctl list-units -t service
+```
+## Enable and start
+```
+systemctl enable --now example.service
+```
+
+# systemd-analyze
+Determine how long it took for processes to start
+```
+systemd-analyze blame
+systemd-analyze blame --user
 ```
