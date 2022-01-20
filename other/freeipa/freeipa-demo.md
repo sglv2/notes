@@ -17,7 +17,7 @@ docker run --name freeipa-1 -it \
     --ip 172.18.0.101 \
     --add-host freeipa2.example.local:172.18.0.102 \
     --add-host freeipa3.example.local:172.18.0.103 \
-    docker.io/freeipa/freeipa-server:fedora-33 \
+    docker.io/freeipa/freeipa-server:fedora-34 \
     ipa-server-install \
     --realm=EXAMPLE.LOCAL \
     --ds-password=The-directory-server-password \
@@ -37,13 +37,13 @@ docker run --name freeipa-2 -it \
     --ip 172.18.0.102 \
     --add-host freeipa1.example.local:172.18.0.101 \
     --add-host freeipa3.example.local:172.18.0.103 \
-    docker.io/freeipa/freeipa-server:fedora-33 \
+    docker.io/freeipa/freeipa-server:fedora-34 \
     ipa-replica-install \
     --domain example.local \
     --server freeipa1.example.local \
     --admin-password=The-admin-password \
     --hostname freeipa2.example.local \
-    --ip-address=172.18.0.102
+    --ip-address=172.18.0.102 \
     --no-host-dns \
     --no-ntp \
     --setup-ca
