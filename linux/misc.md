@@ -13,6 +13,12 @@ Get date from timestap
 date -d @<timestamp>
 ```
 
+## findmnt
+Test /etc/fstab configuration
+```
+sudo findmnt --verbose --verify
+```
+
 ## fmt
 Format output, e.g. for a width of 120 columns.
 ```
