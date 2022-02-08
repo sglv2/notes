@@ -13,6 +13,12 @@ Get date from timestap
 date -d @<timestamp>
 ```
 
+## dumpe2fs
+Filesystem information
+```
+sudo dumpe2fs -h /dev/sda1
+```
+
 ## findmnt
 Test /etc/fstab configuration
 ```
@@ -24,6 +30,12 @@ Format output, e.g. for a width of 120 columns.
 ```
 ps -ef | fmt -w 120
 ```
+
+## fusermount
+```
+fusermount -u /mnt/fuse
+```
+
 ## id
 Print user and group information for the specified USERNAME, or (when USERNAME omitted) for the current user.
 ```
@@ -155,6 +167,14 @@ IP subnet calculator
 ```
 sipcalc 10.0.0.0/28
 ```
+
+## ssh-keygen
+Fingerprint key
+```
+ssh-keygen -lf ~/.ssh/id_ecdsa
+```
+
+## sshfs
 
 ## sudo
 * `-E` preserve environment
