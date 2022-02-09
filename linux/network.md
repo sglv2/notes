@@ -174,3 +174,30 @@ Filter on TCP flags
 ```
 tcpdump -i any  "tcp[tcpflags] & tcp-ack !=0"
 ```
+
+## tcptrace
+Analyze pcap output
+```
+tcptrace file.pcap
+```
+
+## ngrep
+grep on network traffic
+
+## tcpspy
+Logs traffic to syslog
+```
+sudo tcpspy
+```
+
+## tcpreplay
+Replay pcap file
+```
+tcpreplay -i eth0 -tK --loop 1 --unique-ip file.pcap
+```
+
+# NetworkManager
+## Show active connections
+```
+nmcli con show --active
+```
