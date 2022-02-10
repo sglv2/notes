@@ -196,6 +196,14 @@ Replay pcap file
 tcpreplay -i eth0 -tK --loop 1 --unique-ip file.pcap
 ```
 
+## wireshark
+### TLS
+```
+export SSLKEYLOGFILE=~/keylogfile
+```
+In Wireshark, go to Edit->Preferences->Protocols->TLS, set the same value for
+secret logfilename.
+
 # NetworkManager
 ## Show active connections
 ```
