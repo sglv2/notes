@@ -31,6 +31,7 @@ ps --ppid $(pgrep -d ',' $(echo "${CMD}"| sed 's/,/|/g')) \
 ## Process tree
 ```
 pstree -sp ${PID}
+ps -eHo pid,args
 ```
 
 # Namespaces
