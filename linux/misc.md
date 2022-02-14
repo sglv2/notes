@@ -75,6 +75,11 @@ Delete specific command
 delete -d 5
 ```
 
+## httping
+```
+httping -c4 -l -g https://example.com
+```
+
 ## ipcs
 ipcs shows information on the inter-process communication facilities for which the calling process has read access.  
 By default it  shows  information  about  all  three  resources shared memory segments, message queues, and semaphore arrays.
