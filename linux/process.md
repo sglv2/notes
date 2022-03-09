@@ -60,3 +60,9 @@ List routes
 ```
 sudo nsenter -n -t <target-pid> ip r
 ```
+
+# /proc
+## File descriptors
+```
+ls -lh /proc/$PID/fd
+```
