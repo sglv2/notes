@@ -66,3 +66,8 @@ sudo nsenter -n -t <target-pid> ip r
 ```
 ls -lh /proc/$PID/fd
 ```
+## Conntrack
+Max table size
+```
+cat /proc/sys/net/nf_conntrack_max
+```
