@@ -1,4 +1,5 @@
-# variables
+# variables - general
+
 pets = ['cat', 'dog', 'snake']
 x, y, z = pets
 print(x, y, z)
@@ -28,6 +29,18 @@ def cast(val, to_type, default=None):
 print(cast('5', int))  # returns 5
 print(cast('5.5', int))  # returns None
 
+# Strings
+s = '''This is a 
+multiline 
+string spanning 3 lines'''
+print(s)
+
+print(f'line substring was found: {"line" in s}')
+print(f'Slice between index 0 and 4: {s[0:4]}')
+print(f'Slice between index 4 to the end: {s[4:]}')
+print(f'{"one".upper()} {"TWO".lower()} {"  a  ".strip()}')
+print('Split string by newline', s.split("\n"))
+print(f'{"1".isdigit()} {"1".isalnum()} {"1".isalpha()}')
 # Encoding
 s = 'Malmö'
 print(s.encode().decode())  # default is utf-8
@@ -42,3 +55,48 @@ print(s.encode(encoding='ascii', errors='replace'))
 'replace' replaces the character with a questionmark
 'xmlcharrefreplace' replaces the character with an xml character
 """
+
+# Lists
+l = [0, 10, 20, 30, 40, 50, 60, 70, 80]
+print(f'l[1:]={l[1:]}')
+print(f'l[1:2]={l[1:2]}')
+print(f'l[2:-1]={l[2:-1]}')
+print(f'len(l)={len(l)}')
+l.append(100)
+l.insert(1, 5)
+print(l)
+l.extend([110, 120])
+print(l)
+l.pop(1)
+print(l)
+sum = 0
+for x in l:
+    sum = sum + x
+print(sum)
+for i in range(len(l)):
+    print(l[i])
+
+# List comprehension
+[print(x + 1) for x in l]
+l2 = [x for x in l if x % 30 == 0]
+l2.sort(reverse=True)
+print(l2)
+l3 = l2.copy()
+l3.sort()
+print(l2 + l3)
+
+# Tuples
+t1 = (1, 21, 31, 41)
+l4 = list(t1)
+l4[0] = 11
+t2 = tuple(l4)
+print(t2)
+
+# Set
+set1 = {22, 32, 42}
+set1.add(52)
+set2 = set1.union({62, 72})
+[print(x + 1) for x in set1]
+## Get the intersection of 2 sets
+set1.intersection_update({32, 55, 42, 66})
+print(set1)
