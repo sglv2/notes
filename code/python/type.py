@@ -96,7 +96,22 @@ print(t2)
 set1 = {22, 32, 42}
 set1.add(52)
 set2 = set1.union({62, 72})
+set0= {32, 55, 42, 66}
 [print(x + 1) for x in set1]
 ## Get the intersection of 2 sets
-set1.intersection_update({32, 55, 42, 66})
-print(set1)
+set3 = set1.copy()
+print('intersection')
+print(set3.intersection(set0))
+set3.intersection_update(set0)
+print(set3)
+## Get the difference of 2 sets
+print('difference')
+set4 = set1.copy()
+print(set4.symmetric_difference(set0))
+set4.symmetric_difference_update(set0)
+print(set4)
+
+## Other set functions
+print(set1.isdisjoint(set0))
+print({52}.issubset(set1))
+print(set1.issuperset({52}))
