@@ -96,7 +96,7 @@ print(t2)
 set1 = {22, 32, 42}
 set1.add(52)
 set2 = set1.union({62, 72})
-set0= {32, 55, 42, 66}
+set0 = {32, 55, 42, 66}
 [print(x + 1) for x in set1]
 ## Get the intersection of 2 sets
 set3 = set1.copy()
@@ -115,3 +115,34 @@ print(set4)
 print(set1.isdisjoint(set0))
 print({52}.issubset(set1))
 print(set1.issuperset({52}))
+
+# Dictionary
+d = {
+    "k1": "v11",
+    "k2": "v2",
+    "k3": "v3"
+}
+d.update({"k1": "v1"})
+print(d)
+print(f'')
+print(f'len(d)={len(d)}')
+print(f'd["k1"]={d["k1"]}')
+print(f'd.get("k1")={d.get("k1")}')
+print(f'd.items()={d.items()}')
+print(f'Key exists: "k1" in d={"k1" in d}')
+d.pop("k3")
+print(d)
+## print values
+print('for x in d:')
+for x in d:
+    print(x)
+print('for x in d.values():')
+for x in d.values():
+    print(x)
+## print keys
+print('for x in d.keys():')
+for x in d.keys():
+    print(x)
+## print items
+for x, y in d.items():
+    print(x, y)
