@@ -34,6 +34,21 @@ pstree -sp ${PID}
 ps -eHo pid,args
 ```
 
+## Get pids using pgrep
+Match only the command
+```
+pgrep ${CMD}
+```
+Match full command line, e.g. anything that contains '/opt' in the command line
+```
+pgrep -f /opt
+```
+Get the commands for pids retrived using pgrep
+```
+ps -o uname,pid,args --no-headers --pid $(pgrep -f /opt)
+ps -fp $(pgrep -f /opt)
+```
+
 # Namespaces
 ## List namespaces
 ```
