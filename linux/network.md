@@ -100,6 +100,13 @@ Check if ports in range 1-1024 are open for `<ip-address>`
 nmap -T4 -Pn -p 1-1024 <ip-address>
 ```
 
+# DNS
+## resolvectl
+Get details about the uplink DNS servers currently in use.
+```
+resolvectl status
+```
+
 # Firewalls
 ## firewalld
 Check the status of the firewalld service
