@@ -146,3 +146,19 @@ for x in d.keys():
 ## print items
 for x, y in d.items():
     print(x, y)
+## copy dict
+d2 = d.copy()
+d3 = dict(d)
+print(d2)
+print(d3)
+## nested
+d4 = {
+    'k1': 10
+}
+d5 = {
+    'e1': d4
+}
+print(d5['e1']['k1'])
+## fromkeys
+d6 = dict.fromkeys(('k1', 'k2'), 0)
+print(d6)
