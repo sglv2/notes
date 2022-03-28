@@ -64,7 +64,6 @@ print(f'l[2:-1]={l[2:-1]}')
 print(f'every 3rd item={l[::3]}')
 print(f'6 to 3={l[6:3:-1]}')
 print(f'last 3={l[-3:]}')
-exit(1)
 print(f'len(l)={len(l)}')
 l.append(100)
 l.insert(1, 5)
@@ -166,3 +165,9 @@ print(d5['e1']['k1'])
 ## fromkeys
 d6 = dict.fromkeys(('k1', 'k2'), 0)
 print(d6)
+
+# defaultdict
+from collections import defaultdict
+d7 = defaultdict(int)
+d7['k1'] += 1
+print(f"defaultdict d7['k1']={d7['k1']}")
