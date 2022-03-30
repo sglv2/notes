@@ -1,3 +1,5 @@
+# Methods which have names starting with __ are called "dunder" methods and represent special behavior
+# Methods with names starting with _ represent private methods, however Python will allow these to be called anyway
 class Coord:
     def __init__(self, x, y):
         self.x = x
