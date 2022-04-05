@@ -34,7 +34,10 @@ s = '''This is a
 multiline 
 string spanning 3 lines'''
 print(s)
-
+print(id(s))
+s = s + '.'
+## Strings are immutable
+print(id(s))
 print(f'line substring was found: {"line" in s}')
 print(f'Slice between index 0 and 4: {s[0:4]}')
 print(f'Slice between index 4 to the end: {s[4:]}')
@@ -55,6 +58,8 @@ print(s.encode(encoding='ascii', errors='replace'))
 'replace' replaces the character with a questionmark
 'xmlcharrefreplace' replaces the character with an xml character
 """
+
+print(",".join(['a', 'b', 'c']))
 
 # Lists
 l = [0, 10, 20, 30, 40, 50, 60, 70, 80]
@@ -78,6 +83,8 @@ for x in l:
 print(sum)
 for i in range(len(l)):
     print(l[i])
+first, *inner, last = 1, 2, 3, 4, 5, 6, 7, 8
+print(f'{inner}')
 
 # List comprehension
 [print(x + 1) for x in l]
@@ -168,6 +175,22 @@ print(d6)
 
 # defaultdict
 from collections import defaultdict
+
 d7 = defaultdict(int)
 d7['k1'] += 1
 print(f"defaultdict d7['k1']={d7['k1']}")
+
+d8 = {n: n * 2 for n in range(10)}
+print(d8)
+
+# collections
+from collections import deque
+## deque - double ended queue
+q1 = deque([5, 6, 7])
+q1.appendleft(4)
+q1.append(8)
+q1.append(9)
+print(q1.popleft())
+print(q1.pop())
+print(q1)
+

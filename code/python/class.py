@@ -23,6 +23,30 @@ class NewCoord(Coord):
         self.x *= 10
         self.y *= 10
 
+
 c2 = NewCoord(10, 20)
 c2.multiply_by_ten()
 print(f'{c2.x} {c2.y}')
+
+
+class M1:
+    info = 'example'
+
+    def __init__(self, x):
+        self.x = x
+
+    @staticmethod
+    def square(n):
+        return n ** 2
+
+    def get_info(self):
+        return self.info
+
+    @classmethod
+    def print_info(cls):
+        print(f'cls.info={cls.info}')
+        print(f'cls.get_info()={cls.get_info(cls)}')
+
+
+print(M1.square(2))
+M1.increment_by_1()
