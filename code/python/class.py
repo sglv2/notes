@@ -29,8 +29,8 @@ c2.multiply_by_ten()
 print(f'{c2.x} {c2.y}')
 
 
-class M1:
-    info = 'example'
+class Example:
+    info = 'some info'
 
     def __init__(self, x):
         self.x = x
@@ -42,11 +42,16 @@ class M1:
     def get_info(self):
         return self.info
 
+    # The class method will change the value of 'info' for all instances
+    # A class method is a method that is bound to the class and not the object of the class
     @classmethod
-    def print_info(cls):
-        print(f'cls.info={cls.info}')
-        print(f'cls.get_info()={cls.get_info(cls)}')
+    def set_info(cls, info):
+        cls.info = info
 
 
-print(M1.square(2))
-M1.increment_by_1()
+print(Example.square(2))
+m1 = Example(1)
+m2 = Example(2)
+m1.set_info('new info')
+print(m1.get_info())
+print(m2.get_info())
