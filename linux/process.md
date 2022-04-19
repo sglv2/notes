@@ -86,3 +86,7 @@ Max table size
 ```
 cat /proc/sys/net/nf_conntrack_max
 ```
+## Environment variables
+```
+cat /proc/<target-pid>/environ | tr "\0" "\n"
+```
