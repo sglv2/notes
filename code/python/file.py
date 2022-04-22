@@ -19,6 +19,7 @@ f2.close()
 # CSV
 import csv
 
+## open() function is used as a context manager that ensures that the file will be closed after executing the loop
 with open('f3.csv', mode='r') as f3:
     csv_content = csv.reader(f3)
 
