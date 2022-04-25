@@ -1,15 +1,20 @@
+import logging
+
+log = logging.getLogger(__name__)
+
 l = [1, 2, 3, 4, 5]
 try:
     print(l[10])
 except IndexError:
-    print('IndexError')
+    log.error('IndexError')
+
 
 try:
     print(l[1])
 except IndexError:
-    print('IndexError')
+    log.error('IndexError')
 else:
-    print('Something else')
+    log.error('Something else')
 finally:
     print('Step that is always executed')
 
