@@ -44,6 +44,7 @@ print(f'Slice between index 4 to the end: {s[4:]}')
 print(f'{"one".upper()} {"TWO".lower()} {"  a  ".strip()}')
 print('Split string by newline', s.split("\n"))
 print(f'{"1".isdigit()} {"1".isalnum()} {"1".isalpha()}')
+print(f'{s=}') # starting 3.8
 # Encoding
 s = 'Malmö'
 print(s.encode().decode())  # default is utf-8
