@@ -46,3 +46,23 @@ def pow_cached(x, y):
 print(pow_cached(2, 10))
 print(pow_cached(2, 10))
 print(pow_cached(2, 10))
+
+from contextlib import contextmanager
+
+
+@contextmanager
+def some_context():
+    print('start')
+
+    try:
+        yield
+    except Exception as e:
+        print(f'error {e=})')
+        raise
+    else:
+        print('end')
+        print('no error')
+
+
+with some_context():
+    print('hello')
