@@ -1,4 +1,4 @@
-# Arbitrary arguments
+# Arbitrary arguments and return annotation
 def sum1(*args) -> int:
     n = 0
     for i in range(len(args)):
