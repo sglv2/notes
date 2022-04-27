@@ -55,3 +55,30 @@ m2 = Example(2)
 m1.set_info('new info')
 print(m1.get_info())
 print(m2.get_info())
+
+
+class Natural:
+
+    def __init__(self, num):
+        self._num = num
+
+    @property
+    def num(self):
+        return self._num
+
+    @num.setter
+    def num(self, new_num):
+        if new_num > 0 and isinstance(new_num, int):
+            self._num = new_num
+        else:
+            print(f'{new_num} is not valid')
+
+    @num.deleter
+    def num(self):
+        del self._num
+
+
+n = Natural(1)
+print(f'{n.num=}')
+# The setter will be called
+n.num = -1
