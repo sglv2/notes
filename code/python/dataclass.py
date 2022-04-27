@@ -26,3 +26,5 @@ x = Point(1, 1)
 y = Point(3, 3)
 z = x + y
 print(z)
+
+print(f'{isinstance(x, Point)=}')
