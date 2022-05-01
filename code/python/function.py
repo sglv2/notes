@@ -1,4 +1,6 @@
 # Arbitrary arguments and return annotation
+# Use *args and **kwargs only when needed
+# Prefer to modify the argument list and provide default values making the signature more meaningful
 def sum1(*args) -> int:
     n = 0
     for i in range(len(args)):
