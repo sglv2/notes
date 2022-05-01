@@ -82,3 +82,17 @@ n = Natural(1)
 print(f'{n.num=}')
 # The setter will be called
 n.num = -1
+
+
+# Cannot call __do_something directly due to name mangling
+class C1(object):
+    def __do_something(self):
+        print("Called __do_something in C1")
+
+
+class C2(C1):
+    def __do_something(self):
+        print("Called __do_something in C2")
+
+    def public(self):
+        self.__do_something()
