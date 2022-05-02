@@ -40,3 +40,10 @@ from functools import reduce
 
 sum10 = reduce(lambda x, y: x + y, range(10))
 print(f'{sum10=}')
+
+
+def profile_this(n):
+    for i in range(n):
+        print(f'{pow(i,n)}')
+
+profile_this(10)
