@@ -216,3 +216,12 @@ secret logfilename.
 ```
 nmcli con show --active
 ```
+
+# Check own IP
+```
+dig +short myip.opendns.com @resolver1.opendns.com
+```
+or
+```
+curl https://checkip.amazonaws.com
+```
