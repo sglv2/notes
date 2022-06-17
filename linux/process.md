@@ -49,6 +49,14 @@ ps -o uname,pid,args --no-headers --pid $(pgrep -f /opt)
 ps -fp $(pgrep -f /opt)
 ```
 
+# List processes which are not in idle state
+```
+ps -eo s,user,args | grep ^[RD] | sort | uniq -c | sort -nbr | head -10
+```
+D    uninterruptible sleep (usually IO)
+R    running or runnable (on run queue)
+
+
 # Namespaces
 ## List namespaces
 ```
