@@ -98,3 +98,13 @@ cat /proc/sys/net/nf_conntrack_max
 ```
 cat /proc/<target-pid>/environ | tr "\0" "\n"
 ```
+
+## List of syscalls
+Trace child processes
+```
+strace -f ps
+```
+Summary only
+```
+strace -c -f ps
+```
