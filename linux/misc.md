@@ -237,3 +237,9 @@ timeout 5 top
 timeout --preserve-status 3 top
 ```
 If the command reaches the time limit without `--preserve-status`, the exit code is 124
+
+## tr
+Random number using /dev/urandom
+```
+tr -dc 0-9 < /dev/urandom | head -c 3
+```
