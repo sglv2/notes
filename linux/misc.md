@@ -170,6 +170,12 @@ Show module dependencies
 modprobe --show-depends <module>
 ```
 
+## mount
+List ext4 filesystems
+```
+mount -t ext4
+```
+
 ## patch
 ```
 printf "first line" > ~/sample.txt
