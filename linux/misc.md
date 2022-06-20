@@ -24,6 +24,16 @@ Test /etc/fstab configuration
 ```
 sudo findmnt --verbose --verify
 ```
+List filesystems in "df" format
+```
+findmnt -t notmpfs,nosquashfs,novfat,noiso9660,notracefs -D
+findmnt -t ext4 -D
+```
+
+List by device
+```
+findmnt -S /dev/vda1
+```
 
 ## fmt
 Format output, e.g. for a width of 120 columns.
@@ -104,6 +114,10 @@ sudo lastb -iw -s -7days
 ```
 
 ## lsblk
+Exclude RAM, loop, ROM devices
+```
+lsblk --exclude 1,7,11
+```
 
 ## lsof
 List of open files
@@ -128,6 +142,11 @@ Combining filters with `-a` (AND)
 ```
 lsof -p <pid> -u <user> -a
 ```
+## lsmod
+Show the status of modules in the Linux Kernel
+```
+lsmod
+```
 
 ## lsns
 List namespaces for a process
@@ -143,6 +162,12 @@ sudo lsns -t net
 Hardware Info
 ```
 sudo lshw
+```
+
+## modeprobe
+Show module dependencies
+```
+modprobe --show-depends <module>
 ```
 
 ## patch
