@@ -204,6 +204,9 @@ IP subnet calculator
 sipcalc 10.0.0.0/28
 ```
 
+## slabtop
+display kernel slab cache information in real time
+
 ## ssh-keygen
 Fingerprint key
 ```
