@@ -107,6 +107,11 @@ Get details about the uplink DNS servers currently in use.
 resolvectl status
 ```
 
+### systemd-resolve
+```
+systemd-resolve --status | grep "DNS Server"
+```
+
 # Firewalls
 ## firewalld
 Check the status of the firewalld service
