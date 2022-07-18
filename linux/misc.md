@@ -215,6 +215,12 @@ ssh-keygen -lf ~/.ssh/id_ecdsa
 
 ## sshfs
 
+## stat
+Get block size of filesystem
+```
+stat -fc %s .
+```
+
 ## sudo
 * `-E` preserve environment
 * `-l` If no command is specified, list the allowed (and forbidden) commands for the invoking user
