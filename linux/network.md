@@ -5,6 +5,11 @@ ip -br a
 ip -br address list
 ```
 
+List statistics for a specific interface
+```
+ip -s -s l ls eth0
+```
+
 # Routes
 ## List routes
 ```
